@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 //mongoose裡面沒有要exports東西出來，這支程式碼裡也沒有需要再用到mongoose，所以不用const接
 require('./config/mongoose')
 const app = express()
+const PORT = process.env.PORT || 3000
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
@@ -18,6 +19,6 @@ app.use(methodOverride('_method'))
 
 app.use(routes)
 
-app.listen(3000, () => {
-  console.log('App is running on port 3000.')
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
